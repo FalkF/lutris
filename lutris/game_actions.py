@@ -108,6 +108,10 @@ class GameActions:
                 "view", "View on Lutris.net",
                 self.on_view_game
             ),
+            (
+                "stats", "View statistics",
+                self.on_show_statistics
+            ),
         ]
 
     def get_displayed_entries(self):
@@ -142,7 +146,8 @@ class GameActions:
             ),
             "browse": self.game.is_installed and self.game.runner_name != "browser",
             "remove": not self.game.is_search_result,
-            "view": True
+            "view": True,
+            "stats": True,
         }
 
     def on_game_run(self, *_args):
@@ -234,6 +239,10 @@ class GameActions:
         xdgshortcuts.remove_launcher(self.game.slug, self.game.id, desktop=True)
 
     def on_view_game(self, _widget):
+        """Callback to open a game on lutris.net"""
+        open_uri("https://lutris.net/games/%s" % self.game.slug)
+
+    def on_show_statistics(self, _widget):
         """Callback to open a game on lutris.net"""
         open_uri("https://lutris.net/games/%s" % self.game.slug)
 

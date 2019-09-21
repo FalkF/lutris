@@ -112,6 +112,7 @@ class GamePanel(GenericPanel):
             "browse": "system-file-manager-symbolic",
             "show_logs": "utilities-terminal-symbolic",
             "remove": "user-trash-symbolic",
+            "stats": "x-office-spreadsheet",
         }
         buttons = {}
         for action in self.game_actions.get_game_actions():
@@ -151,8 +152,9 @@ class GamePanel(GenericPanel):
 
     def place_buttons(self, base_height):
         play_x_offset = 87
-        icon_offset = 6
+        icon_margin = 6
         icon_width = 32
+        icon_offset = icon_margin + icon_width
         icon_start = 84
         icons_y_offset = 60
         buttons_x_offset = 28
@@ -167,13 +169,16 @@ class GamePanel(GenericPanel):
                 position = (icon_start,
                             base_height + icons_y_offset)
             if action_id == "browse":
-                position = (icon_start + icon_offset + icon_width,
+                position = (icon_start + icon_offset,
+                            base_height + icons_y_offset)
+            if action_id == "stats":
+                position = (icon_start + icon_offset * 2,
                             base_height + icons_y_offset)
             if action_id == "show_logs":
-                position = (icon_start + icon_offset * 2 + icon_width * 2,
+                position = (icon_start + icon_offset * 3,
                             base_height + icons_y_offset)
             if action_id == "remove":
-                position = (icon_start + icon_offset * 3 + icon_width * 3,
+                position = (icon_start + icon_offset * 4,
                             base_height + icons_y_offset)
 
             current_y = base_height + 150

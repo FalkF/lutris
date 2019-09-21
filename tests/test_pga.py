@@ -65,7 +65,7 @@ class TestPersonnalGameArchive(DatabaseTester):
         self.assertEqual(game['directory'], '/foo')
 
     def test_add_session(self):
-        pga.add_session(1,1569013397, 68)
+        pga.add_session(1, 1569013397, 68)
         session = pga.get_session(1)[0]
         self.assertEqual(session['gameid'], 1)
         self.assertEqual(session['date'], 1569013397)
