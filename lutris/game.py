@@ -236,7 +236,6 @@ class Game(GObject.Object):
             id=self.id,
             playtime=self.playtime,
         )
-        pga.add_session(self.id, int(time.time()), self.timer.duration)
         self.emit("game-updated")
 
     def prelaunch(self):
